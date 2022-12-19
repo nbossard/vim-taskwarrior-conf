@@ -8,14 +8,33 @@ if exists("b:current_syntax")
   finish
 endif
 
-syntax match taskRCConfigKey /^[^=#\.]+/ nextgroup=keySeparator,keyValueSeparator
-syntax match keySeparator /\./ nextgroup=tassRCConfigKey
+syntax match taskRCPrimaryConfigKey /^[^=#\.]+/ nextgroup=keySeparator,keyValueSeparator
+syntax match keySeparator /\./ nextgroup=tassRCSecondaryConfigKey
+syntax match tassRCSecondaryConfigKey /\.[^=#\.]+/ nextgroup=keySeparator,keyValueSeparator
 syntax match keyValueSeparator /=/ nextgroup=configValue
 syntax match configValue /[^#]*$/ contained
+syntax keyword taskrcPrimaryKeyword alias context urgency calendar report taskd news uda data
+
+" for data...
+syntax keyword taskrcSecondaryKeyword location
+" For uda...
+syntax keyword taskrcSecondaryKeyword type label
+" For report...
+syntax keyword taskrcSecondaryKeyword description columns sort filter
+" for news...
+syntax keyword taskrcSecondaryKeyword version
+" for calendar..
+syntax keyword taskrcSecondaryKeyword holidays
+" for urgency...
+syntax keyword taskrcSecondaryKeyword coefficient
+" for context...
+syntax keyword taskrcSecondaryKeyword read write
 
 syntax match comment /^\s*#.*$/
 
 highlight link taskRCConfigKey Identifier
+highlight default link taskrcPrimaryKeyword Keyword
+highlight default link taskrcSecondaryKeyword Type
 highlight link keyValueSeparator Delimiter
 highlight link keySeparator Delimiter
 highlight link configValue String
