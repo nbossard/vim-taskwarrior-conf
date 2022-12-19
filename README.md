@@ -2,7 +2,7 @@
 
 ## Features
 
-This vim plugin adds support for taskwarrior conf files
+This vim plugin adds support in vim or neovim for taskwarrior configuration files
 
 Features :
 
