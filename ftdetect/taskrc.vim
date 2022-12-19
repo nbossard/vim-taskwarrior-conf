@@ -5,3 +5,4 @@
 " License: MIT
 
 au BufRead,BufNewFile taskrc setfiletype taskrc
+au BufRead,BufNewFile .taskrc setfiletype taskrc
