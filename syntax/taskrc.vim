@@ -8,14 +8,16 @@ if exists("b:current_syntax")
   finish
 endif
 
-syntax match taskRCConfigKey /^[^=#]+/ nextgroup=separator
-syntax match separator /=/ nextgroup=configValue
+syntax match taskRCConfigKey /^[^=#\.]+/ nextgroup=keySeparator,keyValueSeparator
+syntax match keySeparator /\./ nextgroup=tassRCConfigKey
+syntax match keyValueSeparator /=/ nextgroup=configValue
 syntax match configValue /[^#]*$/ contained
 
 syntax match comment /^\s*#.*$/
 
 highlight link taskRCConfigKey Identifier
-highlight link separator Delimiter
+highlight link keyValueSeparator Delimiter
+highlight link keySeparator Delimiter
 highlight link configValue String
 highlight link comment Comment
 
